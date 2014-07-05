@@ -3,19 +3,19 @@
 An electric motor and it's physics modeled in Ruby.
 
 ```ruby
-m = Motor.new
-m.running?
+motor = ElectricMotor.new
+motor.running?
 => false
-m.rpm
+motor.rpm
 => 0
-m.power(true)
-m.running?
+motor.power(true)
+motor.running?
 => true
-m.rpm
+motor.rpm
 => 1000
-m.power(false)
-m.running?
+motor.power(false)
+motor.running?
 => false
-m.rpm
+motor.rpm
 => 0
 ```
