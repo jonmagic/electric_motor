@@ -4,4 +4,12 @@ class ElectricMotor::Current
   end
 
   attr_reader :charge
+
+  def positive?
+    charge == :positive
+  end
+
+  def negative?
+    charge == :negative
+  end
 end
