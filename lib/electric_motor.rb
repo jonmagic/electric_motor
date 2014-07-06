@@ -21,5 +21,7 @@ end
 require "electric_motor/rotates"
 require "electric_motor/armature"
 require "electric_motor/commutator"
+require "electric_motor/current"
 require "electric_motor/magnet"
 require "electric_motor/magnet/pole"
+require "electric_motor/power_supply"
