@@ -18,5 +18,6 @@ class ElectricMotor
   end
 end
 
+require "electric_motor/armature"
 require "electric_motor/magnet"
 require "electric_motor/magnet/pole"
