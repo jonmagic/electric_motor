@@ -1,16 +1,23 @@
 require "test_helper"
 
 class CommutatorTest < MiniTest::Test
-  def test_each_side_is_180_degrees
-    commutator = ElectricMotor::Commutator.new
+  def test_connects_to_coil
+    commutator  = ElectricMotor::Commutator.new
 
-    assert_equal :a, commutator.input
-    assert_equal :b, commutator.output
-    commutator.turn(180)
-    assert_equal :b, commutator.input
-    assert_equal :a, commutator.output
-    commutator.turn(270)
-    assert_equal :a, commutator.input
-    assert_equal :b, commutator.output
+    assert_equal [commutator.coil.side_a], commutator.side_a.connections
+  end
+
+  def test_makes_connections_based_on_angle
+    left_brush  = ElectricMotor::Brush.new
+    right_brush = ElectricMotor::Brush.new
+    commutator  = ElectricMotor::Commutator.new \
+      left_brush: left_brush, right_brush: right_brush
+
+    commutator.calculate_connections
+    assert_equal [commutator.side_a], left_brush.connections
+    assert_equal [right_brush], commutator.side_b.connections
+    commutator.armature.turn(180)
+    assert_equal [commutator.side_b], left_brush.connections
+    assert_equal [right_brush], commutator.side_a.connections
   end
 end

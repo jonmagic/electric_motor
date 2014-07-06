@@ -1,17 +1,14 @@
 require "test_helper"
 
 class ElectricMotorTest < MiniTest::Test
-  def test_motor_runs_when_given_power
-    motor = ElectricMotor.new
-    refute motor.running?
-    assert_equal 0, motor.rpm
+  def test_current_applied_to_left_brush_arrives_at_right_brush
+    electric_motor = ElectricMotor.new
+    current        = ElectricMotor::Current.new(:positive)
 
-    motor.power(true)
-    assert motor.running?
-    assert_equal 1000, motor.rpm
+    assert_nil electric_motor.right_brush.current.charge
 
-    motor.power(false)
-    refute motor.running?
-    assert_equal 0, motor.rpm
+    electric_motor.left_brush.receive(current)
+
+    assert_equal current, electric_motor.right_brush.current
   end
 end
