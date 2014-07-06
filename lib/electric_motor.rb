@@ -20,6 +20,7 @@ end
 
 require "electric_motor/rotates"
 require "electric_motor/armature"
+require "electric_motor/brush"
 require "electric_motor/commutator"
 require "electric_motor/current"
 require "electric_motor/magnet"
