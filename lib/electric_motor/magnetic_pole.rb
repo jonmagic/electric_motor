@@ -1,4 +1,4 @@
-class ElectricMotor::Magnet::Pole
+class ElectricMotor::MagneticPole
   def initialize(direction)
     @direction = direction
   end
